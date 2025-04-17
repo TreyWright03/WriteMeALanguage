@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<project name="lang" default="parser">
+
+	<!-- ANTLR version -->
+	<property name="antlr.version" value="4.5" />
+
+	<!-- WriteMeAFunction parser -->
+	<target name="WriteMeAFunction-check-parser">
+		<condition property="WriteMeAFunction.parser.uptodate">
+			<and>
+				<uptodate srcfile="src/WriteMeAFunction/WriteMeAFunction.g" targetfile="src/WriteMeAFunction/parser/WriteMeAFunctionParser.java" />
+				<uptodate srcfile="src/WriteMeAFunction/WriteMeAFunction.g" targetfile="src/WriteMeAFunction/parser/WriteMeAFunctionLexer.java" />
+				<uptodate srcfile="src/WriteMeAFunction/WriteMeAFunction.g" targetfile="src/WriteMeAFunction/parser/WriteMeAFunctionListener.java" />
+			</and>
+		</condition>
+	</target>
+
+	<target name="WriteMeAFunction" depends="WriteMeAFunction-check-parser" unless="WriteMeAFunction.parser.uptodate">
+		<java jar="lib/antlr-${antlr.version}-complete.jar" dir="src/WriteMeAFunction/" fork="true" failonerror="true">
+			<arg value="-o" />
+			<arg value="parser" />
+			<arg value="-lib" />
+			<arg value="parser" />
+			<arg value="-package" />
+			<arg value="WriteMeAFunction.parser; import static WriteMeAFunction.AST.*" />
+			<arg value="WriteMeAFunction.g" />
+		</java>
+	</target>
+
+	<target name="parser" depends="WriteMeAFunction" >
+	</target>
+
+        <target name="compile" depends="parser">
+                <mkdir dir="build/classes"/>
+                <javac srcdir="src" destdir="build/classes">
+                        <classpath>
+                                <pathelement path="lib/antlr-4.5-complete.jar"/>
+                        </classpath>
+                </javac>
+        </target>
+
+        <target name="jar" depends="compile">
+                <mkdir dir="build/jar"/>
+                <jar destfile="build/jar/WriteMeAFunction.jar" basedir="build/classes">
+                        <zipgroupfileset dir="lib" includes="antlr-4.5-complete.jar" />
+                        <manifest>
+                                <attribute name="Main-Class" value="WriteMeAFunction.Interpreter"/>
+                        </manifest>
+                </jar>
+        </target>
+
+        <target name="run" depends="jar">
+                <java jar="build/jar/WriteMeAFunction.jar" fork="true"/>
+        </target>
+
+        <target name="clean">
+                <delete dir="build"/>
+        </target>
+	
+</project>
