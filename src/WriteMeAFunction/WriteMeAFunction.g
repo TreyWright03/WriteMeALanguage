@@ -143,7 +143,7 @@ printexp returns [Exp ast]
     ;
 
 enterexp returns [Exp ast]
-    : 'Ask them' id=Identifier { $ast = new EnterQuestExp($id.text); }
+    : 'Ask them' id=Identifier { $ast = new AskThemExp($id.text); }
     ;
 
 boolexp returns [Exp ast]

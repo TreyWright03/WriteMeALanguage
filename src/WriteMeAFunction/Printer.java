@@ -125,8 +125,8 @@ public String visit(AST.PrintExp e, Env env) {
         }
 		
 		@Override
-		public String visit(AST.EnterQuestExp e, Env env) {
-		    return "EnterQuestExp(" + e.name() + ")";
+		public String visit(AST.AskThemExp e, Env env) {
+		    return "AskThemExp(" + e.name() + ")";
 		}
 
 		public String visit(AST.OrExp e, Env env) {

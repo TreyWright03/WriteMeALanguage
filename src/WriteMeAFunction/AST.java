@@ -351,10 +351,10 @@ public interface AST {
 		}
 	}
 
-	public static class EnterQuestExp extends Exp {
+	public static class AskThemExp extends Exp {
 		private final String name;
 	
-		public EnterQuestExp(String name) {
+		public AskThemExp(String name) {
 			this.name = name;
 		}
 	
@@ -532,7 +532,7 @@ public interface AST {
 		public T visit(AST.CompareExp e, Env env);
 		public T visit(AST.WhileExp e, Env env);
 		public T visit(AST.BlockExp e, Env env);
-		public T visit(AST.EnterQuestExp e, Env env);
+		public T visit(AST.AskThemExp e, Env env);
 		public T visit(AST.AndExp e, Env env);
 		public T visit(AST.OrExp e, Env env);
 		public T visit(AST.AssignExp e, Env env);

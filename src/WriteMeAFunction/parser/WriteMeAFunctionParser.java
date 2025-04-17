@@ -1187,7 +1187,7 @@ public class WriteMeAFunctionParser extends Parser {
 			match(ASK);
 			setState(219);
 			((EnterexpContext)_localctx).id = match(Identifier);
-			 ((EnterexpContext)_localctx).ast =  new EnterQuestExp((((EnterexpContext)_localctx).id!=null?((EnterexpContext)_localctx).id.getText():null)); 
+			((EnterexpContext)_localctx).ast =  new AskThemExp((((EnterexpContext)_localctx).id!=null?((EnterexpContext)_localctx).id.getText():null)); 
 			}
 		}
 		catch (RecognitionException re) {

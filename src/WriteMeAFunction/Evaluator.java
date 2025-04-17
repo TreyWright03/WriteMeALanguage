@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 import WriteMeAFunction.AST.AddExp;
 import WriteMeAFunction.AST.AndExp;
+import WriteMeAFunction.AST.AskThemExp;
 import WriteMeAFunction.AST.AssignExp;
 import WriteMeAFunction.AST.BlockExp;
 import WriteMeAFunction.AST.CompareExp;
 import WriteMeAFunction.AST.DefineDecl;
 import WriteMeAFunction.AST.DivExp;
-import WriteMeAFunction.AST.EnterQuestExp;
 import WriteMeAFunction.AST.Exp;
 import WriteMeAFunction.AST.FunctionCall;
 import WriteMeAFunction.AST.FunctionDef;
@@ -153,27 +153,22 @@ public class Evaluator implements Visitor<Value> {
 	}
 	
 	@Override
-public Value visit(EnterQuestExp e, Env env) {
-    System.out.print("> "); // input prompt
-    Scanner scanner = new Scanner(System.in);
-    String input = "";
-    if (scanner.hasNextLine()) {
-        input = scanner.nextLine().trim();
-    }
-    if (input.isEmpty()) {
-        return new UnitVal(); // return unit value for empty input
-    }
-    try {
-        double val = Double.parseDouble(input);
-        env.set(e.name(), new NumVal(val)); // set variable in environment
-    } catch (NumberFormatException ex) {
-        env.set(e.name(), new Value.StrVal(input)); // fallback: treat as string
-    }
-    return new UnitVal();
-}
+	public Value visit(AskThemExp e, Env env) {
+		System.out.print(e.name() + "? ");
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.nextLine();
+		try {
+			double value = Double.parseDouble(input);
+			env.set(e.name(), new NumVal(value));
+		} catch (NumberFormatException ex) {
+			env.set(e.name(), new StrVal(input));
+		}
+		return new UnitVal();
+	}
+
 	@Override
 	public Value visit(StrLitExp e, Env env) {
-	return new StrVal(e.value());
+		return new StrVal(e.value());
 	}
 
 	@Override
@@ -183,13 +178,13 @@ public Value visit(EnterQuestExp e, Env env) {
 	}
 
 	private Value checkType(Value value, Class... types) {
-        for (Class type : types) {
-            if (type.isInstance(value)) {
-                return value;
-            }
-        }
-        return null;
-    }
+		for (Class type : types) {
+			if (type.isInstance(value)) {
+				return value;
+			}
+		}
+		return null;
+	}
 	
 	@Override
 	public Value visit(IfExp e, Env env) {
@@ -211,45 +206,45 @@ public Value visit(EnterQuestExp e, Env env) {
 		}
 	}
 	@Override
-public Value visit(WhileExp e, Env env) {
-    while (true) {
-        // Evaluate the condition
-        Value condVal = e.condition().accept(this, env);
+	public Value visit(WhileExp e, Env env) {
+		while (true) {
+			// Evaluate the condition
+			Value condVal = e.condition().accept(this, env);
 
-        if (!(condVal instanceof NumVal)) {
-            throw new RuntimeException("Condition must be a number (treated as boolean)");
-        }
+			if (!(condVal instanceof NumVal)) {
+				throw new RuntimeException("Condition must be a number (treated as boolean)");
+			}
 
-        // Get the condition value
-        double cond = ((NumVal) condVal).v();
-        
-        // If condition is 0 (false), break the loop
-        if (cond == 0) {
-            break;
-        }
+			// Get the condition value
+			double cond = ((NumVal) condVal).v();
+			
+			// If condition is 0 (false), break the loop
+			if (cond == 0) {
+				break;
+			}
 
-        // Evaluate the body of the loop
-        // This will loop through multiple expressions if grouped with brackets
-        e.body().accept(this, env);  // Here, the body can now be a block with multiple statements
-    }
+			// Evaluate the body of the loop
+			// This will loop through multiple expressions if grouped with brackets
+			e.body().accept(this, env);  // Here, the body can now be a block with multiple statements
+		}
 
-    return new UnitVal(); // Return Unit value to signify no meaningful return
-}
+		return new UnitVal(); // Return Unit value to signify no meaningful return
+	}
 	@Override
 	public Value visit(CompareExp e, Env env) {
-	double l = ((NumVal) e.left().accept(this, env)).v();
-	double r = ((NumVal) e.right().accept(this, env)).v();
-	boolean result;
+		double l = ((NumVal) e.left().accept(this, env)).v();
+		double r = ((NumVal) e.right().accept(this, env)).v();
+		boolean result;
 
-	switch (e.op()) {
-		case ">": result = l > r; break;
-		case "<": result = l < r; break;
-		case ">=": result = l >= r; break;
-		case "<=": result = l <= r; break;
-		case "==": result = l == r; break;
-		case "!=": result = l != r; break;
-		default: throw new RuntimeException("Unknown operator: " + e.op());
-	}
+		switch (e.op()) {
+			case ">": result = l > r; break;
+			case "<": result = l < r; break;
+			case ">=": result = l >= r; break;
+			case "<=": result = l <= r; break;
+			case "==": result = l == r; break;
+			case "!=": result = l != r; break;
+			default: throw new RuntimeException("Unknown operator: " + e.op());
+		}
 
 		return new Value.NumVal(result ? 1 : 0); // return 1 for true, 0 for false
 	}

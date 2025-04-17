@@ -16,7 +16,7 @@ public interface Value {
 	}
 	static class UnitVal implements Value {
 		public static final UnitVal v = new UnitVal();
-	    public String toString() { return "unit"; }
+	    public String toString() { return "Quit"; }
 	}
 	static class StrVal implements Value {
 		private final String _val;
