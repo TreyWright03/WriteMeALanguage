@@ -1,7 +1,7 @@
-# WriteMeAFunction Language Guide
+# WriteMeALanguage Language Guide
 
 ## Introduction
-WriteMeAFunction is a natural language-inspired programming language that uses English-like syntax to make programming more accessible and intuitive. This guide will help you understand the language's grammar and provide examples to get you started.
+WriteMeALanguage is a natural language-inspired programming language that uses English-like syntax to make programming more accessible and intuitive. This guide will help you understand the language's grammar and provide examples to get you started.
 
 ## Basic Syntax
 
@@ -18,10 +18,13 @@ Can you make y = 10
 - Division: `/`
 - Exponentiation: `^`
 
-Examples:
+Note: Complex arithmetic expressions with multiple operations may not work as expected. It's recommended to break down complex calculations into simpler steps using intermediate variables.
+
+Example:
 ```scheme
-Can you make result = 5 + 3 * 2
-Can you make power = 2 ^ 3
+Can you make a = 5
+Can you make b = 3
+Can you make sum = a + b
 ```
 
 ### Numbers
@@ -87,8 +90,43 @@ Can it GREET?
 ## Special Features
 
 ### Random Number Generation
+The RAND function generates a random integer between 0 and 99 (inclusive).
 ```scheme
-Can you make roll = ROLL
+Can you make random_num = RAND
+```
+
+To generate random numbers in different ranges, you can use conditional statements. Here are some examples:
+
+1. Dice Roll (1-6):
+```scheme
+Write me a function called DICE_ROLL {
+    Can you make roll = RAND
+    Can you make result = 1
+    Will it roll > 83? {
+        Can you make result = 6
+    }
+    Will it roll > 66? {
+        Can you make result = 5
+    }
+    Will it roll > 49? {
+        Can you make result = 4
+    }
+    Will it roll > 32? {
+        Can you make result = 3
+    }
+    Will it roll > 16? {
+        Can you make result = 2
+    }
+    Tell them result?
+}
+
+Can it DICE_ROLL?
+```
+
+2. Random Percentage (0-99):
+```scheme
+Can you make percentage = RAND
+Tell them "Percentage: " percentage?
 ```
 
 ### User Input
@@ -101,28 +139,28 @@ Tell them "Hello, " name?
 
 ### Example 1: Simple Calculator
 ```scheme
-Write me a function called CALCULATE {
+Write me a function called ADD {
     Ask them num1
     Ask them num2
     Can you make sum = num1 + num2
     Tell them "The sum is " sum?
 }
 
-Can it CALCULATE?
+Can it ADD?
 ```
 
 ### Example 2: Number Guessing Game
 ```scheme
 Tell them "Welcome to the Number Guessing Game!"?
-Tell them "I'm thinking of a number between 1 and 100"?
+Tell them "I'm thinking of a number between 0 and 99"?
 Tell them "You have 5 attempts to guess it"?
 Tell them "Let's begin!"?
 
-Can you make target = ROLL * 17
+Can you make target = RAND
 Can you make attempts = 5
 Can you make guessed = 0
 
-Write me a function called TEST {
+Write me a function called TOO_LOW {
     Tell them "Too low!"?
 }
 
@@ -136,7 +174,7 @@ Can you do until (attempts > 0 && guessed == 0) {
     }
 
     Will it guess < target? {
-        Can it TEST?
+        Can it TOO_LOW?
     }
 
     Will it guess == target? {
@@ -156,7 +194,9 @@ Will it guessed == 0? {
 2. Use descriptive variable names
 3. Group related operations in blocks
 4. Use functions to organize your code
-5. Add comments to explain complex logic
+5. Break down complex arithmetic operations into simpler steps
+6. Use conditional statements for scaling random numbers
+7. Add comments to explain complex logic
 
 ## Common Pitfalls
 
@@ -165,6 +205,8 @@ Will it guessed == 0? {
 3. Not properly closing blocks
 4. Forgetting to call functions with "Can it"
 5. Using spaces in variable names
+6. Using complex arithmetic expressions in a single line
+7. Trying to use decimal arithmetic directly (use integers instead)
 
 ## Advanced Features
 
@@ -178,11 +220,6 @@ Write me a function called OUTER {
 }
 
 Can it OUTER?
-```
-
-### Complex Expressions
-```scheme
-Can you make result = (5 + 3) * (2 ^ 3) / 4
 ```
 
 ### Multiple Conditions

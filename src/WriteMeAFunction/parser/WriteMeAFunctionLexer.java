@@ -20,7 +20,7 @@ public class WriteMeAFunctionLexer extends Lexer {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, Define=26, Print=27, Roll=28, Let=29, Dot=30, ASK=31, Number=32, 
+		T__24=25, Define=26, Print=27, Rand=28, Let=29, Dot=30, ASK=31, Number=32, 
 		Identifier=33, Letter=34, LetterOrDigit=35, AT=36, ELLIPSIS=37, WS=38, 
 		Comment=39, Line_Comment=40, STRING=41;
 	public static String[] modeNames = {
@@ -31,7 +31,7 @@ public class WriteMeAFunctionLexer extends Lexer {
 		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
 		"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
 		"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
-		"Define", "Print", "Roll", "Let", "Dot", "ASK", "Number", "Identifier", 
+		"Define", "Print", "Rand", "Let", "Dot", "ASK", "Number", "Identifier", 
 		"Letter", "LetterOrDigit", "DIGIT", "AT", "ELLIPSIS", "WS", "Comment", 
 		"Line_Comment", "STRING"
 	};
@@ -40,13 +40,13 @@ public class WriteMeAFunctionLexer extends Lexer {
 		null, "'='", "'('", "')'", "'-'", "'+'", "'#'", "'*'", "'/'", "'^'", "'Tell them '", 
 		"'?'", "'&&'", "'||'", "'>'", "'<'", "'>='", "'<='", "'=='", "'!='", "'Will it '", 
 		"'{'", "'}'", "'Can you do until'", "'Write me a function called'", "'Can it'", 
-		"'Can you make'", "'Tell them'", "'ROLL'", "'let'", "'.'", "'Ask them'", 
+		"'Can you make'", "'Tell them'", "'RAND'", "'let'", "'.'", "'Ask them'", 
 		null, null, null, null, "'@'", "'...'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, "Define", "Print", "Roll", "Let", "Dot", "ASK", "Number", 
+		null, null, "Define", "Print", "Rand", "Let", "Dot", "ASK", "Number", 
 		"Identifier", "Letter", "LetterOrDigit", "AT", "ELLIPSIS", "WS", "Comment", 
 		"Line_Comment", "STRING"
 	};
@@ -208,8 +208,8 @@ public class WriteMeAFunctionLexer extends Lexer {
 		"\2\u00d7\u00d8\7g\2\2\u00d8\66\3\2\2\2\u00d9\u00da\7V\2\2\u00da\u00db"+
 		"\7g\2\2\u00db\u00dc\7n\2\2\u00dc\u00dd\7n\2\2\u00dd\u00de\7\"\2\2\u00de"+
 		"\u00df\7v\2\2\u00df\u00e0\7j\2\2\u00e0\u00e1\7g\2\2\u00e1\u00e2\7o\2\2"+
-		"\u00e28\3\2\2\2\u00e3\u00e4\7T\2\2\u00e4\u00e5\7Q\2\2\u00e5\u00e6\7N\2"+
-		"\2\u00e6\u00e7\7N\2\2\u00e7:\3\2\2\2\u00e8\u00e9\7n\2\2\u00e9\u00ea\7"+
+		"\u00e28\3\2\2\2\u00e3\u00e4\7T\2\2\u00e4\u00e5\7C\2\2\u00e5\u00e6\7P\2"+
+		"\2\u00e6\u00e7\7F\2\2\u00e7:\3\2\2\2\u00e8\u00e9\7n\2\2\u00e9\u00ea\7"+
 		"g\2\2\u00ea\u00eb\7v\2\2\u00eb<\3\2\2\2\u00ec\u00ed\7\60\2\2\u00ed>\3"+
 		"\2\2\2\u00ee\u00ef\7C\2\2\u00ef\u00f0\7u\2\2\u00f0\u00f1\7m\2\2\u00f1"+
 		"\u00f2\7\"\2\2\u00f2\u00f3\7v\2\2\u00f3\u00f4\7j\2\2\u00f4\u00f5\7g\2"+

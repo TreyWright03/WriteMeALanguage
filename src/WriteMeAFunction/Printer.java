@@ -110,14 +110,15 @@ public String visit(AST.PrintExp e, Env env) {
 		public String visit(AST.StrLitExp e, Env env) {
             return e.value(); // Just return the string literal value
         }
+
+		public String visit(AST.RandExp e, Env env) {
+            return "RAND";
+        }
+
 		@Override
 		public String visit(WhileExp exp, Env env) {
 			return "(LOOP-WHILE " + exp.condition().accept(this, env) + " " + exp.body().accept(this, env) + ")";
 		}
-
-        public String visit(AST.RollExp e, Env env) {
-            return "Roll"; // Or something like: String.valueOf((int)(Math.random() * 6 + 1));
-        }
 
 		public String visit(AST.BlockExp e, Env env) {
             return "ExitGame"; // Or handle game exit behavior however you want

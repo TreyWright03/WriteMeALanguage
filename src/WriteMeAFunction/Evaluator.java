@@ -21,7 +21,7 @@ import WriteMeAFunction.AST.OrExp;
 import WriteMeAFunction.AST.PowExp;
 import WriteMeAFunction.AST.PrintExp;
 import WriteMeAFunction.AST.Program;
-import WriteMeAFunction.AST.RollExp;
+import WriteMeAFunction.AST.RandExp;
 import WriteMeAFunction.AST.StrLitExp;
 import WriteMeAFunction.AST.SubExp;
 import WriteMeAFunction.AST.UnitExp;
@@ -177,9 +177,9 @@ public Value visit(EnterQuestExp e, Env env) {
 	}
 
 	@Override
-	public Value visit(RollExp e, Env env) {
-	int result = 1 + (int)(Math.random() * 6); // Generates a value from 1 to 6
-	return new Value.NumVal(result);
+	public Value visit(RandExp e, Env env) {
+		double result = Math.random(); // Generates a random number between 0 and 1
+		return new Value.NumVal((int)(result * 100)); // Multiply by 100 and cast to int to get a random integer between 0 and 99
 	}
 
 	private Value checkType(Value value, Class... types) {

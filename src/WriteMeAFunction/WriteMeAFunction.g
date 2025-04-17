@@ -31,7 +31,7 @@ definedecl returns [DefineDecl ast] :
         | inm=infixmuldiv { $ast = $inm.ast;}
         | inp = infixpower { $ast = $inp.ast; }
         | p=printexp { $ast = $p.ast; }
-        | r=rollexp { $ast = $r.ast; }
+        | r=randexp { $ast = $r.ast; }
         | i=ifexp { $ast = $i.ast; }
         | wh=whileexp { $ast = $wh.ast; }
         | b=block { $ast = $b.ast; }
@@ -109,7 +109,7 @@ infixpower returns [Exp ast]
 atom returns [Exp ast]
     : id=Identifier { $ast = new VarExp($id.text); }          // Variable case (like `a`, `b`)
     | n=numexp { $ast = $n.ast; }                            // Numeric case (like `3`, `-5`)
-    | r=rollexp { $ast = $r.ast; }                          // Roll case
+    | r=randexp { $ast = $r.ast; }                          // Roll case
     ;
 
 // COPIED FROM INFIX
@@ -138,8 +138,8 @@ printexp returns [Exp ast]
       '?'
     ;
 
-    rollexp returns [Exp ast]
-    : 'ROLL' { $ast = new RollExp(); }
+    randexp returns [Exp ast]
+    : 'RAND' { $ast = new RandExp(); }
     ;
 
 enterexp returns [Exp ast]
@@ -221,7 +221,7 @@ functioncall returns [Exp ast]:
  
  Define : 'Can you make' ;
  Print : 'Tell them';
- Roll : 'ROLL';
+ Rand : 'RAND';
  Let : 'let' ;
  Dot : '.' ;
 ASK : 'Ask them';

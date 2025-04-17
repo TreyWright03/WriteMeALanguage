@@ -20,19 +20,19 @@ public class WriteMeAFunctionParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, Define=26, Print=27, Roll=28, Let=29, Dot=30, ASK=31, Number=32, 
+		T__24=25, Define=26, Print=27, Rand=28, Let=29, Dot=30, ASK=31, Number=32, 
 		Identifier=33, Letter=34, LetterOrDigit=35, AT=36, ELLIPSIS=37, WS=38, 
 		Comment=39, Line_Comment=40, STRING=41;
 	public static final int
 		RULE_program = 0, RULE_definedecl = 1, RULE_exp = 2, RULE_assignment = 3, 
 		RULE_numexp = 4, RULE_infixaddsubt = 5, RULE_infixmuldiv = 6, RULE_infixpower = 7, 
-		RULE_atom = 8, RULE_varexp = 9, RULE_printexp = 10, RULE_rollexp = 11, 
+		RULE_atom = 8, RULE_varexp = 9, RULE_printexp = 10, RULE_randexp = 11, 
 		RULE_enterexp = 12, RULE_boolexp = 13, RULE_boolexp_rest = 14, RULE_term = 15, 
 		RULE_ifexp = 16, RULE_whileexp = 17, RULE_block = 18, RULE_functiondef = 19, 
 		RULE_functioncall = 20;
 	public static final String[] ruleNames = {
 		"program", "definedecl", "exp", "assignment", "numexp", "infixaddsubt", 
-		"infixmuldiv", "infixpower", "atom", "varexp", "printexp", "rollexp", 
+		"infixmuldiv", "infixpower", "atom", "varexp", "printexp", "randexp", 
 		"enterexp", "boolexp", "boolexp_rest", "term", "ifexp", "whileexp", "block", 
 		"functiondef", "functioncall"
 	};
@@ -41,13 +41,13 @@ public class WriteMeAFunctionParser extends Parser {
 		null, "'='", "'('", "')'", "'-'", "'+'", "'#'", "'*'", "'/'", "'^'", "'Tell them '", 
 		"'?'", "'&&'", "'||'", "'>'", "'<'", "'>='", "'<='", "'=='", "'!='", "'Will it '", 
 		"'{'", "'}'", "'Can you do until'", "'Write me a function called'", "'Can it'", 
-		"'Can you make'", "'Tell them'", "'ROLL'", "'let'", "'.'", "'Ask them'", 
+		"'Can you make'", "'Tell them'", "'RAND'", "'let'", "'.'", "'Ask them'", 
 		null, null, null, null, "'@'", "'...'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, "Define", "Print", "Roll", "Let", "Dot", "ASK", "Number", 
+		null, null, "Define", "Print", "Rand", "Let", "Dot", "ASK", "Number", 
 		"Identifier", "Letter", "LetterOrDigit", "AT", "ELLIPSIS", "WS", "Comment", 
 		"Line_Comment", "STRING"
 	};
@@ -175,7 +175,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(55); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
 
 			        ((ProgramContext)_localctx).ast =  new Program(_localctx.defs, new BlockExp(_localctx.exprs));
 			    
@@ -253,7 +253,7 @@ public class WriteMeAFunctionParser extends Parser {
 		public InfixmuldivContext inm;
 		public InfixpowerContext inp;
 		public PrintexpContext p;
-		public RollexpContext r;
+		public RandexpContext r;
 		public IfexpContext i;
 		public WhileexpContext wh;
 		public BlockContext b;
@@ -288,8 +288,8 @@ public class WriteMeAFunctionParser extends Parser {
 		public PrintexpContext printexp() {
 			return getRuleContext(PrintexpContext.class,0);
 		}
-		public RollexpContext rollexp() {
-			return getRuleContext(RollexpContext.class,0);
+		public RandexpContext randexp() {
+			return getRuleContext(RandexpContext.class,0);
 		}
 		public IfexpContext ifexp() {
 			return getRuleContext(IfexpContext.class,0);
@@ -412,7 +412,7 @@ public class WriteMeAFunctionParser extends Parser {
 				enterOuterAlt(_localctx, 10);
 				{
 				setState(94);
-				((ExpContext)_localctx).r = rollexp();
+				((ExpContext)_localctx).r = randexp();
 				 ((ExpContext)_localctx).ast =  ((ExpContext)_localctx).r.ast; 
 				}
 				break;
@@ -889,13 +889,13 @@ public class WriteMeAFunctionParser extends Parser {
 		public Exp ast;
 		public Token id;
 		public NumexpContext n;
-		public RollexpContext r;
+		public RandexpContext r;
 		public TerminalNode Identifier() { return getToken(WriteMeAFunctionParser.Identifier, 0); }
 		public NumexpContext numexp() {
 			return getRuleContext(NumexpContext.class,0);
 		}
-		public RollexpContext rollexp() {
-			return getRuleContext(RollexpContext.class,0);
+		public RandexpContext randexp() {
+			return getRuleContext(RandexpContext.class,0);
 		}
 		public AtomContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -934,11 +934,11 @@ public class WriteMeAFunctionParser extends Parser {
 				 ((AtomContext)_localctx).ast =  ((AtomContext)_localctx).n.ast; 
 				}
 				break;
-			case Roll:
+			case Rand:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(188);
-				((AtomContext)_localctx).r = rollexp();
+				((AtomContext)_localctx).r = randexp();
 				 ((AtomContext)_localctx).ast =  ((AtomContext)_localctx).r.ast; 
 				}
 				break;
@@ -1084,7 +1084,7 @@ public class WriteMeAFunctionParser extends Parser {
 				case T__23:
 				case T__24:
 				case Define:
-				case Roll:
+				case Rand:
 				case ASK:
 				case Number:
 				case Identifier:
@@ -1102,7 +1102,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(210); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier) | (1L << STRING))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier) | (1L << STRING))) != 0) );
 
 			          ((PrintexpContext)_localctx).ast =  new PrintExp(parts);
 			      
@@ -1121,31 +1121,31 @@ public class WriteMeAFunctionParser extends Parser {
 		return _localctx;
 	}
 
-	public static class RollexpContext extends ParserRuleContext {
+	public static class RandexpContext extends ParserRuleContext {
 		public Exp ast;
-		public RollexpContext(ParserRuleContext parent, int invokingState) {
+		public RandexpContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_rollexp; }
+		@Override public int getRuleIndex() { return RULE_randexp; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).enterRollexp(this);
+			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).enterRandexp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).exitRollexp(this);
+			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).exitRandexp(this);
 		}
 	}
 
-	public final RollexpContext rollexp() throws RecognitionException {
-		RollexpContext _localctx = new RollexpContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_rollexp);
+	public final RandexpContext randexp() throws RecognitionException {
+		RandexpContext _localctx = new RandexpContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_randexp);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(215);
-			match(Roll);
-			 ((RollexpContext)_localctx).ast =  new RollExp(); 
+			match(Rand);
+			 ((RandexpContext)_localctx).ast =  new RandExp(); 
 			}
 		}
 		catch (RecognitionException re) {
@@ -1331,7 +1331,7 @@ public class WriteMeAFunctionParser extends Parser {
 			case T__23:
 			case T__24:
 			case Define:
-			case Roll:
+			case Rand:
 			case ASK:
 			case Number:
 			case Identifier:
@@ -1487,7 +1487,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(258); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
 			setState(260);
 			match(T__21);
 
@@ -1569,7 +1569,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(271); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
 			setState(273);
 			match(T__21);
 
@@ -1639,7 +1639,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(280); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
 			setState(282);
 			match(T__21);
 			  // ← directly allow blocks inside exp
@@ -1715,7 +1715,7 @@ public class WriteMeAFunctionParser extends Parser {
 				setState(291); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Roll) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__3) | (1L << T__9) | (1L << T__19) | (1L << T__20) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << Define) | (1L << Rand) | (1L << ASK) | (1L << Number) | (1L << Identifier))) != 0) );
 			setState(293);
 			match(T__21);
 

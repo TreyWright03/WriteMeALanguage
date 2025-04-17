@@ -320,8 +320,8 @@ public interface AST {
 		}
 	}
 	
-	public static class RollExp extends Exp {
-		public RollExp() {}
+	public static class RandExp extends Exp {
+		public RandExp() {}
 	
 		public <T> T accept(Visitor<T> visitor, Env env) {
 			return visitor.visit(this, env);
@@ -527,7 +527,7 @@ public interface AST {
 		public T visit(AST.DefineDecl d, Env env);
 		public T visit(AST.PrintExp e, Env env);
 		public T visit(AST.StrLitExp e, Env env);
-		public T visit(AST.RollExp e, Env env);
+		public T visit(AST.RandExp e, Env env);
 		public T visit(AST.IfExp e, Env env);
 		public T visit(AST.CompareExp e, Env env);
 		public T visit(AST.WhileExp e, Env env);

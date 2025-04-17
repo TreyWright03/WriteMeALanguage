@@ -149,13 +149,13 @@ public class WriteMeAFunctionBaseListener implements WriteMeAFunctionListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRollexp(WriteMeAFunctionParser.RollexpContext ctx) { }
+	@Override public void enterRandexp(WriteMeAFunctionParser.RandexpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRollexp(WriteMeAFunctionParser.RollexpContext ctx) { }
+	@Override public void exitRandexp(WriteMeAFunctionParser.RandexpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
