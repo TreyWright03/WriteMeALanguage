@@ -35,7 +35,7 @@ definedecl returns [DefineDecl ast] :
         | i=ifexp { $ast = $i.ast; }
         | wh=whileexp { $ast = $wh.ast; }
         | b=block { $ast = $b.ast; }
-        | eq=enterexp { $ast = $eq.ast; }
+        | ask=askexp { $ast = $ask.ast; }
         | be=boolexp { $ast = $be.ast; }
         | fd=functiondef { $ast = $fd.ast; }
         | fc=functioncall { $ast = $fc.ast; }
@@ -142,7 +142,7 @@ printexp returns [Exp ast]
     : 'RAND' { $ast = new RandExp(); }
     ;
 
-enterexp returns [Exp ast]
+askexp returns [Exp ast]
     : 'Ask them' id=Identifier { $ast = new AskThemExp($id.text); }
     ;
 

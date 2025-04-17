@@ -161,13 +161,13 @@ public class WriteMeAFunctionBaseListener implements WriteMeAFunctionListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnterexp(WriteMeAFunctionParser.EnterexpContext ctx) { }
+	@Override public void enterAskexp(WriteMeAFunctionParser.AskexpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnterexp(WriteMeAFunctionParser.EnterexpContext ctx) { }
+	@Override public void exitAskexp(WriteMeAFunctionParser.AskexpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

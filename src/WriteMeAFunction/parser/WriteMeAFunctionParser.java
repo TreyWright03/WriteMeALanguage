@@ -27,13 +27,13 @@ public class WriteMeAFunctionParser extends Parser {
 		RULE_program = 0, RULE_definedecl = 1, RULE_exp = 2, RULE_assignment = 3, 
 		RULE_numexp = 4, RULE_infixaddsubt = 5, RULE_infixmuldiv = 6, RULE_infixpower = 7, 
 		RULE_atom = 8, RULE_varexp = 9, RULE_printexp = 10, RULE_randexp = 11, 
-		RULE_enterexp = 12, RULE_boolexp = 13, RULE_boolexp_rest = 14, RULE_term = 15, 
+		RULE_askexp = 12, RULE_boolexp = 13, RULE_boolexp_rest = 14, RULE_term = 15, 
 		RULE_ifexp = 16, RULE_whileexp = 17, RULE_block = 18, RULE_functiondef = 19, 
 		RULE_functioncall = 20;
 	public static final String[] ruleNames = {
 		"program", "definedecl", "exp", "assignment", "numexp", "infixaddsubt", 
 		"infixmuldiv", "infixpower", "atom", "varexp", "printexp", "randexp", 
-		"enterexp", "boolexp", "boolexp_rest", "term", "ifexp", "whileexp", "block", 
+		"askexp", "boolexp", "boolexp_rest", "term", "ifexp", "whileexp", "block", 
 		"functiondef", "functioncall"
 	};
 
@@ -257,7 +257,7 @@ public class WriteMeAFunctionParser extends Parser {
 		public IfexpContext i;
 		public WhileexpContext wh;
 		public BlockContext b;
-		public EnterexpContext eq;
+		public AskexpContext ask;
 		public BoolexpContext be;
 		public FunctiondefContext fd;
 		public FunctioncallContext fc;
@@ -300,8 +300,8 @@ public class WriteMeAFunctionParser extends Parser {
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
-		public EnterexpContext enterexp() {
-			return getRuleContext(EnterexpContext.class,0);
+		public AskexpContext askexp() {
+			return getRuleContext(AskexpContext.class,0);
 		}
 		public BoolexpContext boolexp() {
 			return getRuleContext(BoolexpContext.class,0);
@@ -444,8 +444,8 @@ public class WriteMeAFunctionParser extends Parser {
 				enterOuterAlt(_localctx, 14);
 				{
 				setState(106);
-				((ExpContext)_localctx).eq = enterexp();
-				 ((ExpContext)_localctx).ast =  ((ExpContext)_localctx).eq.ast; 
+				((ExpContext)_localctx).ask = askexp();
+				 ((ExpContext)_localctx).ast =  ((ExpContext)_localctx).ask.ast; 
 				}
 				break;
 			case 15:
@@ -1159,35 +1159,35 @@ public class WriteMeAFunctionParser extends Parser {
 		return _localctx;
 	}
 
-	public static class EnterexpContext extends ParserRuleContext {
+	public static class AskexpContext extends ParserRuleContext {
 		public Exp ast;
 		public Token id;
 		public TerminalNode Identifier() { return getToken(WriteMeAFunctionParser.Identifier, 0); }
-		public EnterexpContext(ParserRuleContext parent, int invokingState) {
+		public AskexpContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_enterexp; }
+		@Override public int getRuleIndex() { return RULE_askexp; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).enterEnterexp(this);
+			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).enterAskexp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).exitEnterexp(this);
+			if ( listener instanceof WriteMeAFunctionListener ) ((WriteMeAFunctionListener)listener).exitAskexp(this);
 		}
 	}
 
-	public final EnterexpContext enterexp() throws RecognitionException {
-		EnterexpContext _localctx = new EnterexpContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_enterexp);
+	public final AskexpContext askexp() throws RecognitionException {
+		AskexpContext _localctx = new AskexpContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_askexp);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(218);
 			match(ASK);
 			setState(219);
-			((EnterexpContext)_localctx).id = match(Identifier);
-			((EnterexpContext)_localctx).ast =  new AskThemExp((((EnterexpContext)_localctx).id!=null?((EnterexpContext)_localctx).id.getText():null)); 
+			((AskexpContext)_localctx).id = match(Identifier);
+			 ((AskexpContext)_localctx).ast =  new AskThemExp((((AskexpContext)_localctx).id!=null?((AskexpContext)_localctx).id.getText():null)); 
 			}
 		}
 		catch (RecognitionException re) {

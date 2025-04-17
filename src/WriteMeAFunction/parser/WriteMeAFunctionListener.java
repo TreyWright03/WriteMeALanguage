@@ -129,15 +129,15 @@ public interface WriteMeAFunctionListener extends ParseTreeListener {
 	 */
 	void exitRandexp(WriteMeAFunctionParser.RandexpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link WriteMeAFunctionParser#enterexp}.
+	 * Enter a parse tree produced by {@link WriteMeAFunctionParser#askexp}.
 	 * @param ctx the parse tree
 	 */
-	void enterEnterexp(WriteMeAFunctionParser.EnterexpContext ctx);
+	void enterAskexp(WriteMeAFunctionParser.AskexpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link WriteMeAFunctionParser#enterexp}.
+	 * Exit a parse tree produced by {@link WriteMeAFunctionParser#askexp}.
 	 * @param ctx the parse tree
 	 */
-	void exitEnterexp(WriteMeAFunctionParser.EnterexpContext ctx);
+	void exitAskexp(WriteMeAFunctionParser.AskexpContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link WriteMeAFunctionParser#boolexp}.
 	 * @param ctx the parse tree
