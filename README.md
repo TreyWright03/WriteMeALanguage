@@ -1,4 +1,4 @@
-# WriteMeAFunction Language Guide
+# WriteMeALanguage Guide
 
 ## Introduction
 WriteMeAFunction is a natural language-inspired programming language that uses English-like syntax to make programming more accessible and intuitive. This guide will help you understand the language's grammar and provide examples to get you started.
