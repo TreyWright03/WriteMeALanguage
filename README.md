@@ -105,22 +105,20 @@ Write me a function called DICE_ROLL {
     Will it roll > 83? {
         Can you make result = 6
     }
-    Will it roll > 66? {
+    Will it roll > 66 && roll < 84? {
         Can you make result = 5
     }
-    Will it roll > 49? {
+    Will it roll > 49 && roll < 67? {
         Can you make result = 4
     }
-    Will it roll > 32? {
+    Will it roll > 32 && roll < 50? {
         Can you make result = 3
     }
-    Will it roll > 16? {
+    Will it roll > 16 && roll < 33? {
         Can you make result = 2
     }
     Tell them result?
 }
-
-Can it DICE_ROLL?
 ```
 
 2. Random Percentage (0-99):
