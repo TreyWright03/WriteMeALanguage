@@ -33,20 +33,20 @@ Write me a function called ENCOUNTER {
         Tell them "You found a healing potion! +1 life"?
         Can you make lives = lives + 1
     }
-    Will it encounter_type > 60? {
+    Will it encounter_type > 60 && encounter_type < 81? {
         Tell them "You found a treasure chest!"?
         Can you make has_treasure = 1
     }
-    Will it encounter_type > 40? {
+    Will it encounter_type > 40 && encounter_type < 61? {
         Tell them "You found nothing interesting."?
     }
-    Will it encounter_type > 20? {
+    Will it encounter_type > 20 && encounter_type < 41? {
         Tell them "A monster attacks! -1 life"?
-        Can you make lives = lives - 1
+        Can you make lives = lives + -1
     }
-    Will it encounter_type > 0? {
+    Will it encounter_type > 0 && encounter_type < 21? {
         Tell them "You found a trap! -1 life"?
-        Can you make lives = lives - 1
+        Can you make lives = lives + -1
     }
 }
 

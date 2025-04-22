@@ -15,7 +15,7 @@ Write me a function called SUBTRACT {
     Ask them num1
     Tell them "Enter second number:"?
     Ask them num2
-    Can you make difference = num1 # num2
+    Can you make difference = num1 - num2
     Tell them "The difference is: " difference?
 }
 
